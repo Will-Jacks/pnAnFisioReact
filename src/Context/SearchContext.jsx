@@ -1,20 +1,20 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const SearchContext = createContext();
 
-function useSearchContext() {
+const useSearchContext = () => {
     return useContext(SearchContext);
 }
 
-function SearchProvider({ children }) {
-    const [searchContent, setSearchContent] = useState(''); 
+const SearchProvider= ( { children } )=> {
+    const [searchContent, setSearchContent] = useState('');
     // Conteúdo do input do Header search
 
     return (
-        <SearchContext.Provider value={{searchContent, setSearchContent}}>
+        <SearchContext.Provider value={{ searchContent, setSearchContent }}>
             {children}
         </SearchContext.Provider>
     )
 }
 
-export { useSearchContext, SearchProvider}
+export { useSearchContext, SearchProvider }

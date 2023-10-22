@@ -1,20 +1,18 @@
-import { useState } from 'react'
-import { SearchProvider } from './Context/SearchContext.jsx';
-import Header from './Components/Header/Header.jsx';
-
-import RenderBooks from './Components/RenderBooks/RenderBooks.jsx';
-import Search from './utils/Search.jsx';
-
-function App() {
-  const [count, setCount] = useState(0);
+import Books from './Components/Books/Books.jsx';
+import Home from './Components/Home/Home.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NavBar from './Components/NavBar/NavBar.jsx';
+const App = () => {
 
   return (
     <>
-      <SearchProvider>
-        <Header />
-        <Search />
-        <RenderBooks />
-      </SearchProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/books' element={<Books />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

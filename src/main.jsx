@@ -1,27 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import './index.css';
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+import App from './App.jsx';
+import NavBar from './Components/NavBar/NavBar.jsx';
+
 import { SearchProvider } from './Context/SearchContext.jsx';
-
-import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements } from 'react-router-dom';
-
-import Home from './Routes/Home.jsx';
-import Books from './Routes/Books.jsx';
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Home />}>
-      <Route path="dashboard" element={<Books />} />
-      {/* ... etc. */}
-    </Route>
-  )
-);
+import { RenderFilteredBooksProvider } from './Context/RenderFilteredBooksContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <SearchProvider>
-      <RouterProvider router={router}/>
-    </SearchProvider>
+    <RenderFilteredBooksProvider>
+      <SearchProvider>
+        <App />
+      </SearchProvider>
+    </RenderFilteredBooksProvider>
+
   </React.StrictMode>,
 )
